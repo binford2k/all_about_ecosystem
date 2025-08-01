@@ -1,0 +1,32 @@
+{
+  "name": "It's all about the ecosystem, bby",
+  "issues": "https://github.com/binford2k/all_about_ecosystem/issues/new?title=",
+  "sections": [
+    "Overview/title.md",
+    "Overview/intro.md",
+    "Overview/why_care.md",
+
+    "Ecosystems/content.md",
+    "Ecosystems/enabling.md",
+    "Ecosystems/maker_spaces.md",
+    "Ecosystems/cultivating.md",
+
+    "Forking/new_venture.md",
+    "Forking/reality_of_money.md",
+    "Forking/openvox.md",
+    "Forking/oss-roots.md",
+
+    "Business/sideways.md",
+    "Business/crumbling_foundation.md",
+    "Business/product.md",
+    "Business/treat_like_product.md",
+    "Business/planning_table.md",
+    "Business/monetize.md",
+    "Business/ethos.md",
+    "Business/incentives.md",
+
+    "Conclusion/hippie.md",
+    "Conclusion/questions.md"
+  ]
+}
+
