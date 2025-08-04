@@ -75,15 +75,15 @@ a {
 }
 .slide.credit {
   background:
-    no-repeat bottom 25px right 20px url("/image/_images/showoff-icon.png"),
-    url("/image/_images/ecosystem.jpg");
+    no-repeat bottom 25px right 20px url("file/_images/showoff-icon.png"),
+    url("file/_images/ecosystem.jpg");
     background-size: auto, contain;
 }
 .slide.credit:after {
   color: white;
 }
 .slide.intro {
-  background: no-repeat bottom 25px right 20px url("/image/_images/old_man_yells_at_puppet.png");
+  background: no-repeat bottom 25px right 20px url("file/_images/old_man_yells_at_puppet.png");
 }
 .content.cover {
   color: white;
