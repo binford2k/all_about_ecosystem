@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>It's all about the ecosystem, bby</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+
+  
+
+  <link rel="stylesheet" type="text/css" href="css/highlight/default.css"  />
+  <link rel="stylesheet" type="text/css" href="css/mermaid-6.0.0.css" />
+  <link rel="stylesheet" type="text/css" href="css/font-awesome-5.6.1/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="css/introjs-2.5.local.css">
+  <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.12.1.css">
+  <link rel="stylesheet" type="text/css" href="css/showoff.css?v=0.20.4" />
+  <link rel="stylesheet" type="text/css" href="css/zoomline-0.0.1.css">
+
+  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.12.1.js"></script>
+
+  <script type="text/javascript" src="js/jquery.cycle.all-2.8.0.js"></script>
+  <script type="text/javascript" src="js/jquery.batchImageLoad-1.0.0.js"></script>
+  <script type="text/javascript" src="js/jquery.parsequery.min-6a20f83.js"></script>
+  <script type="text/javascript" src="js/jquery.doubletap-4ff02c5.js"></script>
+  <script type="text/javascript" src="js/highlight.pack-9.15.10.js"></script>
+  <script type="text/javascript" src="js/highlightjs-line-numbers.min.js"></script>
+  <script type="text/javascript" src="js/jTypeWriter-1.1.js"></script>
+  <script type="text/javascript" src="js/bigtext-0.1.8.js"></script>
+  <script type="text/javascript" src="js/zoomline-0.0.1.js"></script>
+  <script type="text/javascript" src="js/simpleStrings-0.0.1.js"></script>
+  <script type="text/javascript" src="js/mermaid-6.0.0-min.js"></script>
+
+  <!-- waiting on https://github.com/usablica/intro.js/pull/727 -->
+  <script type="text/javascript" src="js/intro-2.5.local.js"></script>
+
+  <script type="text/javascript" src="js/coffee-script-1.1.3-pre.js"></script>
+
+  <script type="text/javascript" src="js/annotations.js?v=0.20.4"></script>
+  <script type="text/javascript" src="js/showoff.js?v=0.20.4"></script>
+
+  
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  
+
+  
+
+  <script type="text/javascript">
+    $(function(){
+      setupPreso(false);
+    });
+
+    editUrl     = "";
+    interactive = false;
+    master      = false;
+    presenter   = false;
+
+    keymap               = {
+  "d": "DEBUG",
+  "space": "NEXT",
+  "down": "NEXT",
+  "right": "NEXT",
+  "pagedown": "NEXT",
+  "up": "PREV",
+  "left": "PREV",
+  "pageup": "PREV",
+  "SPACE": "NEXTSEC",
+  "DOWN": "NEXTSEC",
+  "RIGHT": "NEXTSEC",
+  "PAGEDOWN": "NEXTSEC",
+  "UP": "PREVSEC",
+  "LEFT": "PREVSEC",
+  "PAGEUP": "PREVSEC",
+  "R": "RELOAD",
+  "r": "REFRESH",
+  "c": "CONTENTS",
+  "t": "CONTENTS",
+  "h": "HELP",
+  "/": "HELP",
+  "?": "HELP",
+  "b": "BLANK",
+  ".": "BLANK",
+  "F": "FOOTER",
+  "f": "FOLLOW",
+  "n": "NOTES",
+  "esc": "CLEAR",
+  "p": "PAUSE",
+  "P": "PRESHOW",
+  "x": "EXECUTE",
+  "f5": "EXECUTE"
+};
+    keycode_dictionary   = {
+  "0": "\\",
+  "8": "backspace",
+  "9": "tab",
+  "12": "num",
+  "13": "enter",
+  "16": "shift",
+  "17": "ctrl",
+  "18": "alt",
+  "19": "pause",
+  "20": "caps",
+  "27": "esc",
+  "32": "space",
+  "33": "pageup",
+  "34": "pagedown",
+  "35": "end",
+  "36": "home",
+  "37": "left",
+  "38": "up",
+  "39": "right",
+  "40": "down",
+  "44": "print",
+  "45": "insert",
+  "46": "delete",
+  "48": "0",
+  "49": "1",
+  "50": "2",
+  "51": "3",
+  "52": "4",
+  "53": "5",
+  "54": "6",
+  "55": "7",
+  "56": "8",
+  "57": "9",
+  "59": ";",
+  "61": "=",
+  "65": "a",
+  "66": "b",
+  "67": "c",
+  "68": "d",
+  "69": "e",
+  "70": "f",
+  "71": "g",
+  "72": "h",
+  "73": "i",
+  "74": "j",
+  "75": "k",
+  "76": "l",
+  "77": "m",
+  "78": "n",
+  "79": "o",
+  "80": "p",
+  "81": "q",
+  "82": "r",
+  "83": "s",
+  "84": "t",
+  "85": "u",
+  "86": "v",
+  "87": "w",
+  "88": "x",
+  "89": "y",
+  "90": "z",
+  "91": "cmd",
+  "92": "cmd",
+  "93": "cmd",
+  "96": "num_0",
+  "97": "num_1",
+  "98": "num_2",
+  "99": "num_3",
+  "100": "num_4",
+  "101": "num_5",
+  "102": "num_6",
+  "103": "num_7",
+  "104": "num_8",
+  "105": "num_9",
+  "106": "num_multiply",
+  "107": "num_add",
+  "108": "num_enter",
+  "109": "num_subtract",
+  "110": "num_decimal",
+  "111": "num_divide",
+  "112": "f1",
+  "113": "f2",
+  "114": "f3",
+  "115": "f4",
+  "116": "f5",
+  "117": "f6",
+  "118": "f7",
+  "119": "f8",
+  "120": "f9",
+  "121": "f10",
+  "122": "f11",
+  "123": "f12",
+  "124": "print",
+  "144": "num",
+  "145": "scroll",
+  "173": "-",
+  "186": ";",
+  "187": "=",
+  "188": ",",
+  "189": "-",
+  "190": ".",
+  "191": "/",
+  "192": "`",
+  "219": "[",
+  "220": "\\",
+  "221": "]",
+  "222": "'",
+  "223": "`",
+  "224": "cmd",
+  "225": "alt",
+  "57392": "ctrl",
+  "63289": "num"
+};
+    keycode_shifted_keys = {
+  "0": ")",
+  "1": "!",
+  "2": "@",
+  "3": "#",
+  "4": "$",
+  "5": "%",
+  "6": "^",
+  "7": "&",
+  "8": "*",
+  "9": "(",
+  "/": "?",
+  ".": ">",
+  ",": "<",
+  "'": "\"",
+  ";": ":",
+  "[": "{",
+  "]": "}",
+  "\\": "|",
+  "`": "~",
+  "=": "+",
+  "-": "_",
+  "space": "SPACE",
+  "down": "DOWN",
+  "right": "RIGHT",
+  "pagedown": "PAGEDOWN",
+  "up": "UP",
+  "left": "LEFT",
+  "pageup": "PAGEUP"
+};
+    user_translations    = {};
+
+    I18n = new translation({"name":"Showoff Presentation","menu":{"title":"Showoff Menu","table_of_contents":"Table of Contents","downloads":"Downloads","feedback":{"label":"Send Feedback","description":"This slide is...","worst":"Terrible","best":"Awesome","why":"Why...?","send":"Send"},"pace":{"label":"The presenter should...","slower":"Slow Down","faster":"Speed Up"},"question":{"label":"Ask a Question","placeholder":"Ask a question..."},"edit":"Edit Current Slide","clear_annotations":"Clear Annotations","language":"Content Language","close":"Close","help":"Press <code>?</code> for help.","anonymous":"All features are anonymous.","sending":"Sending..."},"navigation":{"next":"Next","previous":"Previous","sync":"Sync Presentation"},"loading":"loading presentation...","activity_complete":"Activity complete","follow":{"label":"Follow Mode:"},"refresh":"Are you sure you want to refresh the slide content?\n\n(Use `RELOAD` to fully reload the entire UI)","reload":"Are you sure you want to reload Showoff?","preshow":{"prompt":"Minutes from now to start?","resume":"Resuming in:"},"tour":{"show":"See the Tour","reset":"Reset Hints","welcome":"<h3>Welcome to Showoff</h3>Let me show you around. After you finish this tour, it won't show again.","displayview":"Start by clicking this button to open the Display Window; then drag it onto the projector.","annotations":"Draw on your slides everywhere the presentation is displayed.","timer":"Set a countdown timer to help you stay on pace.","pace":"Audience members can use this to tell you if you're moving too quickly. Try to keep the indicator centered.","questions":"Questions asked by audience members are displayed here. You'll also see a count indicator on the Display Window when you have questions to answer.","notes":"Configure the notes display by zooming text, resizing the pane, or even popping it out into a new window.","slidesource":"The name of the slide is displayed here.","settings":"Would you like a different presenter layout? Choose that and other settings here.","edit":"This button will open your web-based editor--usually something like GitHub.","report":"Don't forget to report issues when you see them.","activity":{"count":"This will count down as audience members mark their activity complete. Their presentations will pause until completed.","complete":"Check this box when you're ready to move on. The presentation will pause while you're working."},"form":{"responses":"As questions are answered, they'll show up as a bar chart with the number of answers to each question on the right.","display":"Press this button to present a snapshot of the live responses on slide.","save":"Press this button to save your responses. The presentation will pause while answering."},"menu":{"start":"Click here to open the menu.","navigation":"Quickly navigate to any slide.","download":"Download presentation support files.","pace":"Provide pace feedback.","questions":"Ask live questions of the presenter.","feedback":"Provide suggestions for improving the content."}},"downloads":{"title":"File Downloads"},"help":{"title":"Help","next":"Move to the next slide.","prev":"Move to the previous slide.","nextsec":"Move to the next section.","prevsec":"Move to the previous section.","contents":"Show the table of contents menu.","follow":"Toggle follow mode.","help":"Show this help dialog.","refresh":"Refresh slide content.","reload":"Completely reload Showoff.","blank":"Blank the screen.","footer":"Toggle the display footer.","notes":"Toggle notes display.","clear":"Clear code execution results.","pause":"Pause the presentation.","preshow":"Display slideshow of <tt>preshow</tt> images on a timer.","execute":"Execute the first visible code block.","debug":"Show debugging information.","close":"Close"},"stats":{"title":"Viewing Statistics","stray":"of your audience is not viewing the same slide you are.","idle":"of your audience is idle.","current":"Slides currently being viewed","elapsed":"Elapsed time spent on each slide","nodata":"No data to display.","allcurrent":"All audience members are viewing the presenter's slide."},"forms":{"display":"Display Results","save":"Save"},"presenter":{"topbar":{"annotations":"Annotations","edit":"Edit Slide","report":"Report Issue With Slide","stats":"Viewing Statistics","downloads":"Downloads","display":"Display Window","print":"Print Slides","settings":"Settings","newpage":"Open in a new page...","tooltip":{"annotations":"Enable the annotations subsystem.","edit":"Edit current slide in new window.","report":"Report an issue with the current slide.","stats":"See the slides your audience is interacting with.","downloads":"Open the file downloads in a menu or new page.","display":"Enable the Display Window; you should put this on the projector.","print":"Print slides using a new window.","settings":"Open the Settings dialog."}},"preview":{"next":"Next","previous":"Previous"},"mobile":{"update":"Update"},"notes":{"label":"Showoff Notes","personal":"Personal Notes"},"timer":{"label":"Timer:","start":"Start","pause":"Pause","resume":"Resume","cancel":"Cancel","unit":"minutes"},"pace":{"faster":"Speed Up!","slower":"Slow Down!"},"questions":"Audience Questions","annotation":{"tools":"Tools","lines":"Lines","shapes":"Shapes"},"status":{"label":"Slides:"},"settings":{"label":"Settings","close":"Close","follower":{"label":"Update Follower","tooltip":"Send slide change notifications.","description":"When this is enabled, the Showoff server will track your slide changes. Disable it to observe the presentation without inadvertently causing slide changes."},"remote":{"label":"Enable Remote","tooltip":"Enables tracking of other presenters.","description":"When this is enabled, you can load the presenter in another browser (typically on your mobile phone) to control the presentation."},"layout":{"label":"Layout","default":"Default Layout","thumbs":"Display thumbnail previews of the next and previous slides.","beside":"Display the next slide as a large preview in the main presenter view.","floating":"Open the next slide as a floating window.","confirmation":"Browser security requires confirmation before opening a new window.","open":"Open Window","cancel":"cancel","reset":{"label":"Clear Showoff settings.","tooltip":"Reset Showoff UI settings to default values."}},"language":{"label":"Content Language","tooltip":"Select from available translations, or autoselect based on your browser settings.","description":"This presentation is available in different languages. Choose the language you would like to view or leave it at <tt>automatic</tt> to use your browser settings."}},"print":{"label":"Choose type of printed notes","description":"Select the content you'd like to show under the slides.","none":"Don't include notes","notes":"Presenter Notes","handouts":"Audience Handouts"}},"language":{"auto":"Automatic","disable":"Disable Translations"},"error":{"file_not_found":"File Not Found!"}});
+
+  </script>
+
+</head>
+
+<body>
+<div id="questionsIndicator"></div>
+
+<i id="hamburger" class="fa fa-bars fa-2x"></i>
+<div id="sidebarWrapper">
+    <div id="navigationHover"></div>
+    <div id="feedbackSidebar" class="sideMenu">
+    <img id="disconnected" src="css/disconnected.png">
+    <h3>Showoff Menu</h3>
+    <div id="navToggle" class="buttonWrapper"><i class=" fa fa-bookmark"></i> Table of Contents</div>
+    <div id="navigation" class="submenu"></div>
+    
+    <hr>
+
+    
+
+    
+
+    <div id="closeMenu" class="buttonWrapper"><i class="fa fa-close"></i> Close</div>
+    <hr>
+
+    <small>
+        <p>Press <code>?</code> for help.</p>
+        <p>All features are anonymous.</p>
+    </small>
+    </div>
+    <div id="sidebarExit"></div>
+</div>
+<div id="help-modal" title="Help">
+  <div id="help">
+    <div>
+      <span class="description">Move to the next slide.</span>
+      <span class="action">NEXT</span>
+      <span class="hotkeys"><span class="key">space</span><span class="key">down</span><span class="key">right</span><span class="key">pagedown</span></span>
+    </div>
+    <div>
+      <span class="description">Move to the previous slide.</span>
+      <span class="action">PREV</span>
+      <span class="hotkeys"><span class="key">up</span><span class="key">left</span><span class="key">pageup</span></span>
+    </div>
+    <div>
+      <span class="description">Move to the next section.</span>
+      <span class="action">NEXTSEC</span>
+      <span class="hotkeys"><span class="key">SPACE</span><span class="key">DOWN</span><span class="key">RIGHT</span><span class="key">PAGEDOWN</span></span>
+    </div>
+    <div>
+      <span class="description">Move to the previous section.</span>
+      <span class="action">PREVSEC</span>
+      <span class="hotkeys"><span class="key">UP</span><span class="key">LEFT</span><span class="key">PAGEUP</span></span>
+    </div>
+    <div>
+      <span class="description">Show the table of contents menu.</span>
+      <span class="action">CONTENTS</span>
+      <span class="hotkeys"><span class="key">c</span><span class="key">t</span></span>
+    </div>
+    <div>
+      <span class="description">Toggle follow mode.</span>
+      <span class="action">FOLLOW</span>
+      <span class="hotkeys"><span class="key">f</span></span>
+    </div>
+    <div>
+      <span class="description">Show this help dialog.</span>
+      <span class="action">HELP</span>
+      <span class="hotkeys"><span class="key">h</span><span class="key">/</span><span class="key">?</span></span>
+    </div>
+
+    <hr />
+
+    <div>
+      <span class="description">Refresh slide content.</span>
+      <span class="action">REFRESH</span>
+      <span class="hotkeys"><span class="key">r</span></span>
+    </div>
+    <div>
+      <span class="description">Completely reload Showoff.</span>
+      <span class="action">RELOAD</span>
+      <span class="hotkeys"><span class="key">R</span></span>
+    </div>
+    <div>
+      <span class="description">Blank the screen.</span>
+      <span class="action">BLANK</span>
+      <span class="hotkeys"><span class="key">b</span><span class="key">.</span></span>
+    </div>
+    <div>
+      <span class="description">Toggle the display footer.</span>
+      <span class="action">FOOTER</span>
+      <span class="hotkeys"><span class="key">F</span></span>
+    </div>
+    <div>
+      <span class="description">Toggle notes display.</span>
+      <span class="action">NOTES</span>
+      <span class="hotkeys"><span class="key">n</span></span>
+    </div>
+    <div>
+      <span class="description">Clear code execution results.</span>
+      <span class="action">CLEAR</span>
+      <span class="hotkeys"><span class="key">esc</span></span>
+    </div>
+    <div>
+      <span class="description">Pause the presentation.</span>
+      <span class="action">PAUSE</span>
+      <span class="hotkeys"><span class="key">p</span></span>
+    </div>
+    <div>
+      <span class="description">Display slideshow of <tt>preshow</tt> images on a timer.</span>
+      <span class="action">PRESHOW</span>
+      <span class="hotkeys"><span class="key">P</span></span>
+    </div>
+    <div>
+      <span class="description">Execute the first visible code block.</span>
+      <span class="action">EXECUTE</span>
+      <span class="hotkeys"><span class="key">x</span><span class="key">f5</span></span>
+    </div>
+
+    <hr />
+
+    <div>
+      <span class="description">Show debugging information.</span>
+      <span class="action">DEBUG</span>
+      <span class="hotkeys"><span class="key">d</span></span>
+    </div>
+  </div>
+</div>
+
+<div id="preso"><center>loading presentation...</center></div>
+<a id="synchronize"><i class="fa fa-link" aria-hidden="true" href="#"></i> Sync Presentation</a>
+<div id="notes"></div>
+
+<footer id="footer">
+  <span id="followLabel" class="container">Follow Mode: <i id="followMode" class="fa fa-ban" aria-hidden="true"></i></span>
+  <span id="slideInfo" class="container"></span>
+  <span id="debugInfo" class="container"></span>
+  <span id="notesInfo" class="container"></span>
+  <span id="slideFilename" class="container"></span>
+  <img id="disconnected" src="css/disconnected.png" />
+</footer>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div data-section="Overview" data-title="title" id="Overview_title" class="slide cover center credit" data-transition="none">
+<div class="content cover center credit" ref="Overview/title">
+<h1>It's all about the ecosystem</h1>
+
+<h2>Ben Ford</h2>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Overview" data-title="intro" id="Overview_intro" class="slide intro" data-transition="none">
+<div class="content intro" ref="Overview/intro">
+<h1>Who Am I?</h1>
+
+<p><img src="./file//_images/profile1.jpg" class=" float_right w50" alt=""></p>
+
+<ul>
+<li>Worked at Puppet for more than 13 years</li>
+<li>When I started, we were creating our first Enterprise product with an OSS core....</li>
+<li>Wore many hats over the years
+
+<ul>
+<li>Pro Services, Developer, Education, Community, Product, Podcaster, Dev Relations</li>
+</ul>
+</li>
+<li>Some fun projects:
+
+<ul>
+<li>Node Encrypt -- in-catalog encryption</li>
+<li>Manifold -- pattern based resource relationships</li>
+<li>Showoff -- advanced interactive presenter</li>
+<li>Tons of developer experience tools</li>
+</ul>
+</li>
+</ul>
+
+
+</div>
+<div class="notes-section notes">
+
+<p>And now I'm a founder and CEO. Life is wild.</p>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Overview" data-title="why_care" id="Overview_why_care" class="slide" data-transition="none">
+<div class="content " ref="Overview/why_care">
+<h1>Why do I care so much about community?</h1>
+
+<p><img src="./file//_images/roller_derby.png" class=" float_left w50" alt=""></p>
+
+<ul>
+<li>Involved with and led community my whole life
+
+<ul>
+<li>LUG president and advisor</li>
+<li>Running Club</li>
+<li>Roller Derby</li>
+<li>Conferences and meetups</li>
+</ul>
+</li>
+<li>Inspired by Portland's creative spaces
+
+<ul>
+<li>OMSI maker's markets</li>
+<li>Local craft faires</li>
+<li>Soap box derby</li>
+<li>Maker concept -- build and <strong><em>share</em></strong>
+</li>
+</ul>
+</li>
+</ul>
+
+
+</div>
+<div class="notes-section notes">
+
+<ul>
+<li>Even demoed VMware at hobbyist fair for my LUG in 1998 before anyone had heard of virtual machines.</li>
+<li>Run a computer inside a computer? What is this black magic?!?!?</li>
+</ul>
+
+<hr>
+
+<ul>
+<li><a href="https://www.soapboxracer.org" target="_blank">https://www.soapboxracer.org</a></li>
+<li>Saturday Aug. 16th</li>
+</ul>
+
+<hr>
+
+<ul>
+<li>This is a photo from a Break Neck Betties bout.</li>
+<li>Her name is Darth Maully</li>
+</ul>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Ecosystems" data-title="content" id="Ecosystems_content" class="slide" data-transition="none">
+<div class="content " ref="Ecosystems/content">
+<h1>Content Ecosystems</h1>
+
+<p><img src="./file//_images/toolbox.jpg" class=" float_right w45" alt=""></p>
+
+<ul>
+<li>Some things you buy for their own uses
+
+<ul>
+<li>Bicycle, automobile, clothing, etc</li>
+</ul>
+</li>
+<li>Some things don't really have their own intrinsic value:
+
+<ul>
+<li>Puppet, Ansible, Nintendo Switch, Spotify, waffle maker, web browser, etc.</li>
+<li>Their value comes from ecosystem of content or things you can create</li>
+</ul>
+</li>
+<li>If all you could do with Puppet was what it came with <strong><em>then nobody would buy it</em></strong>.</li>
+</ul>
+
+<p class="callout lightbulb borderless"> Content-enabling products are not solutions on their own.</p>
+
+
+</div>
+<div class="notes-section notes">
+
+<ul>
+<li>Honestly, Puppet and Ansible by themselves are just ways to write more consistent
+shell scripts.</li>
+<li>Their true value today comes from the content library that's been built up on
+top of that.</li>
+<li>In a world with no waffle mix, what's the use of a waffle maker?
+And that'd be a sad, sad world</li>
+<li>These are <u>toolboxes</u> more than standalone solutions on their own.</li>
+<li>Nobody buys a tool to just have the tool but for what you can do with it
+
+<ul>
+<li>You don't just hang it on the wall and show it off, except for some
+weird saw art or something</li>
+</ul>
+</li>
+</ul>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Ecosystems" data-title="enabling" id="Ecosystems_enabling" class="slide" data-transition="none">
+<div class="content " ref="Ecosystems/enabling">
+<h1>Enabling Content</h1>
+
+<p><img src="./file//_images/developers.gif" class=" float_right w50" alt=""></p>
+
+<ul>
+<li>The value of a platform is in its ecosystem of content</li>
+<li>"Developers, developers, developers!"</li>
+<li>Why MS and Apple give away dev tools</li>
+<li>Why Apple invests so much in ecosystem
+
+<ul>
+<li>Enabling content developers</li>
+<li>Cultivating that maker mentality</li>
+</ul>
+</li>
+</ul>
+
+<p class="callout quote">Steve Ballmer said that "I'm trying to tell people at that time
+that third parties really mattered" hoping to drive home a simple message:
+<strong><em>Microsoft needed third-party developers to survive.</em></strong></p>
+
+
+</div>
+<div class="notes-section notes">
+
+<ul>
+<li>Platforms: Windows, iPhone, Firefox, Puppet, Ansible, Netflix, Steam</li>
+<li>The big companies who understand this concept invest VAST amounts of money into
+supporting and enabling their content ecosystems</li>
+<li>web browsers would not be big business today if the internet of random shit didn't exist.
+
+<ul>
+<li>the "browser wars" would never have happened</li>
+</ul>
+</li>
+<li>Microsoft needed applications for its platform. Out of the box, it really only
+let you write simple text docs and play solitaire. Adding applications like
+QuickBooks to do your accounting is what made it the juggernaut it is today.</li>
+<li>The iphone exploded in popularity, not for being a good phone (it wasn't really)
+but because the app store was the first time it became almost trivial for any
+mainstream developer to distribute their apps. People today complain about annoying
+and inconsistent review processes, but most of them never had to deal with physical
+media supply chains or breaking into big-box sales.
+
+<ul>
+<li>If I wanted to build and sell an application in 1995, I would have to front
+the cash myself to press a bunch of CDROMs, print a user manual (that was a
+thing then), stuff them in boxes, send them out through distribution chains,
+and hope somebody bought enough to at least break even.</li>
+<li>The ecosystem existed, but it was a relatively high bar.</li>
+<li>By 2005, I could sell over the Internet, but distribution and promotion was
+still my problem.</li>
+<li>But in 2008, all that changed. All I needed to do was poke a few buttons in
+xcode and schlupp it off to the app store.</li>
+<li>Not really a fan of the walled garden approach but Apple created an ecosystem
+accessible to both developers and users, and that's made them a whole wad of cash.</li>
+</ul>
+</li>
+<li>We can learn from these stories because the same dynamics apply to free and open
+source software.</li>
+<li>Even Linux itself has the same story. It became popular, not for being good,
+but because it unlocked an immense ecosystem of hobbyist programmers who
+<strong><em>built stuff</em></strong> for it.</li>
+</ul>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Ecosystems" data-title="maker_spaces" id="Ecosystems_maker_spaces" class="slide" data-transition="none">
+<div class="content " ref="Ecosystems/maker_spaces">
+<h1>Maker spaces</h1>
+
+<p><img src="./file//_images/erector.jpg" class=" float_right w50" alt=""></p>
+
+<ul>
+<li>All the good conferences are actually maker spaces
+
+<ul>
+<li>WWDC</li>
+<li>reInvent</li>
+<li>Kubecon</li>
+<li>LinuxWorld</li>
+<li>DevOpsDays</li>
+<li>cfgmgmtcamp 🎉</li>
+</ul>
+</li>
+<li>Not about the vendor or product, but what you can build and create with it
+
+<ul>
+<li>Or share and see what others have created!</li>
+</ul>
+</li>
+</ul>
+
+<p class="callout lightbulb">None of the platforms are viable without a robust content ecosystem!</p>
+
+
+</div>
+<div class="notes-section notes">
+
+<ul>
+<li>Sure I tune in for the product announcements, but WWDC is not really about Apple!
+
+<ul>
+<li>It's in the name; World Wide <strong><em>DEVELOPER</em></strong> Conference</li>
+</ul>
+</li>
+<li>reInvent is not about AWS -- Kubecon is not about Kubernetes</li>
+<li>Yes, there are themes, but the conferences are all about their ecosystem -- what you can build -- seeing what people have created -- get you excited to create something ON THEIR PLATFORM</li>
+<li>You'll go to one of these conferences and you'll find a billion dollar company
+in a booth right next to two people working out of their garage.
+
+<ul>
+<li>Hi, it me.</li>
+</ul>
+</li>
+<li>And the most fun part about it is the collaboration that happens.
+
+<ul>
+<li>You built that cool thing?</li>
+<li>Awesome, I built this cool thing, we could plug them together!</li>
+<li>I ran into Jeremy at OSS Summit last year and now we're building our CI
+solution on top of Dagger.</li>
+</ul>
+</li>
+<li>Toy companies have it figured out, Legos, Erector Set, Lincoln Logs, etc.</li>
+</ul>
+
+<p><strong>These platforms are viable BECAUSE people like you and me build things on them!</strong></p>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Ecosystems" data-title="cultivating" id="Ecosystems_cultivating" class="slide" data-transition="none">
+<div class="content " ref="Ecosystems/cultivating">
+<h1>Cultivating an Ecosystem</h1>
+
+<p><img src="./file//_images/succulent_mound.jpeg" class=" float_right w50" alt=""></p>
+
+<ul>
+<li>Without the right conditions, not even the best seeds will grow.</li>
+<li>Water, light, the right nutrients</li>
+<li>Same applies for communities</li>
+<li>Fertile environment and the right incentives
+
+<ul>
+<li>Money <em>(sometimes)</em>
+</li>
+<li>Autonomy</li>
+<li>Sense of belonging and appreciation</li>
+<li>Accomplishment and recognition</li>
+</ul>
+</li>
+</ul>
+
+
+</div>
+<div class="notes-section notes">
+
+<ul>
+<li>All you need to grow a garden is just soil, water, seeds, and time, right?</li>
+<li>Turns out it's more complicated than that.</li>
+<li>Not all plants have the same nourishment needs.</li>
+<li>This is my house, it's a flat mound about two feet tall overgrown with succulents.</li>
+<li>When we moved in, I needed to do some terraforming for drainage purposes and had
+a big pile of dirt left over, so I built this mound and planted a bunch of pretty plants.</li>
+<li>They looked really beautiful for a while and then they died. So I tried again
+and they died again. More water, more fertilizer, they died again.</li>
+<li>Ultimately I realized something; and the more seasoned gardeners probably already
+know what I'm going to say.</li>
+<li>I wasn't taking into account what the plants actually needed. Succulents get
+waterlogged and drown if there's too much water, and too much fertilizer stresses
+the plant to the point it dies.</li>
+<li>The soil here is very thick -- almost clay -- and doesn't drain well.</li>
+<li>So I hollowed out the mound and filled it with light quick draining potting soil,
+with drainage slots and suddenly it took off.</li>
+</ul>
+
+<p class="callout">This is how communities work. You can't just throw money at them. You need
+to understand how and why they work. You need to know their incentives. And you
+need to show up where they are and feed their needs. Let them lead.</p>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Forking" data-title="new_venture" id="Forking_new_venture" class="slide" data-transition="none">
+<div class="content " ref="Forking/new_venture">
+<h1>A New Venture</h1>
+
+<h2>(and an immediate pivot)</h2>
+
+<p><img src="./file//_images/sponsor-overlook-sm.png" class=" float_right" alt=""></p>
+
+<ul>
+<li>Some of you know about the company I'm building -- consulting, custom
+development, maybe build some things</li>
+<li>Right now was when I was going to tell you about the products we're building</li>
+<li><em>But things don't always go the way they're supposed to....</em></li>
+<li>Perforce closed Puppet development and EULA-walled access to OSS Puppet
+
+<ul>
+<li>No packages and can only run on 25 nodes!</li>
+<li>Jump through hoops to build modules and tools for the ecosystem and in
+exchange you get..... nothing</li>
+<li>Treated module authors like they were being granted some kind of favor by
+being <strong><em>allowed</em></strong> to write code for the Puppet platform.</li>
+</ul>
+</li>
+<li><em>And we needed open source Puppet to exist in order to build on!</em></li>
+</ul>
+
+<p class="callout cheers">So we pivoted to keeping the ecosystem alive.</p>
+
+
+</div>
+<div class="notes-section notes">
+
+<ul>
+<li>The company I worked for wasn't doing those things for our community
+
+<ul>
+<li>a community that depended on the content ecosystem!</li>
+</ul>
+</li>
+<li>So a friend and I made plans to build a company to actually do right.
+
+<ul>
+<li>And then they saved me some time and fired me lol 😂</li>
+</ul>
+</li>
+</ul>
+
+<hr>
+
+<ul>
+<li>Test pipelines are all but impossible.</li>
+<li>Very much feels like a rug pull</li>
+<li>No appreciation or recognition</li>
+<li>Felt like being exploited -- no longer equal partners</li>
+</ul>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Forking" data-title="reality_of_money" id="Forking_reality_of_money" class="slide" data-transition="none">
+<div class="content " ref="Forking/reality_of_money">
+<h1>cold hard cash</h1>
+
+<p><img src="./file//_images/counting_cash.jpg" class=" float_right w50" alt=""></p>
+
+<ul>
+<li>Didn't actually change a lot just yet -- we're still building community</li>
+<li>But we're building OpenVox community, subsuming the original Puppet community</li>
+<li>Started out by seeking grants, sponsors, contributions
+
+<ul>
+<li>Stipends for conference travel and speaking</li>
+<li>Robust bug bounty program</li>
+</ul>
+</li>
+<li>Revenue to keep the company alive.</li>
+</ul>
+
+<p class="callout money">But money is not the biggest driver for most contributors</p>
+
+
+</div>
+<div class="notes-section notes">
+
+<ul>
+<li>besides money...</li>
+<li>Autonomy</li>
+<li>Sense of belonging and appreciation</li>
+<li>Accomplishment and recognition</li>
+</ul>
+
+<p>These appeal to the hierarchy of needs.</p>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Forking" data-title="openvox" id="Forking_openvox" class="slide" data-transition="none">
+<div class="content " ref="Forking/openvox">
+<h1>So let's talk OpenVox</h1>
+
+<p><img src="./file//_images/vox_fork_driver.png" class=" float_right w50" alt=""></p>
+
+<ul>
+<li>Puppet closed development -- the APL-2 license allows that 🤨</li>
+<li>Overlook InfraTech immediately built and released open package versions</li>
+<li>Worked with Vox Pupuli to stabilize a fork and immediately people swarmed to help</li>
+<li>Opportunity to once again feel like contributions matter and are appreciated</li>
+<li>Suddenly people are excited to be involved again</li>
+</ul>
+
+<p class="callout lightbulb">Give people a way to make a difference and <em>they will</em>.</p>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Forking" data-title="oss-roots" id="Forking_oss-roots" class="slide" data-transition="none">
+<div class="content " ref="Forking/oss-roots">
+<h1>Back to Open Source Roots</h1>
+
+<p><img src="./file//_images/finch.jpg" class=" float_left" alt=""></p>
+
+<ul>
+<li>Solve your own problems</li>
+<li>Contribute to something larger than yourself and make a difference</li>
+<li>Share with others and be recognized and appreciated for it</li>
+<li>Equitable exchange of value -- get as well as give.</li>
+<li>Original community is becoming increasingly irrelevant</li>
+</ul>
+
+<p class="callout info">85% or more of engagement now happens in the new Slack<sup>*</sup> space and
+our pipeline improvements already let us move at a velocity that the legacy project
+can only dream of.</p>
+
+
+</div>
+<div class="notes-section notes">
+
+<p>Foreshadowing: we are still a business and we plan on making money ethically by
+keeping these community values first where they belong.</p>
+
+<p>Yes, Slack is problematic. We're looking for an alternative that's acceptable for
+community members who need to participate from work networks that block Matrix
+and IRC and such.</p>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Business" data-title="sideways" id="Business_sideways" class="slide" data-transition="none">
+<div class="content " ref="Business/sideways">
+<h1>Companies going Sideways</h1>
+
+<p><img src="./file//_images/reading_map.jpeg" class=" float_right w50" alt=""></p>
+
+<ul>
+<li>They've practically got a roadmap so why do so many companies get lost?</li>
+<li>OSS gets you to market much faster</li>
+<li>At first returns are fast and easy so the value is obvious</li>
+<li>But then there's process... and investors to answer to...
+and because OSS value is so obvious nobody thought they'd have to document why</li>
+<li>And so over time this knowledge is forgotten about.</li>
+</ul>
+
+<p class="callout meh">As most businesses mature, they lose sight of the value of OSS and
+lose the employees and community members who care enough to do something about it.</p>
+
+
+</div>
+<div class="notes-section notes">
+
+<p>Hashicorp, Redis, Chef, MySQL, now Puppet...
+Just like a hike in the woods, OSS success takes planning ahead</p>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Business" data-title="crumbling_foundation" id="Business_crumbling_foundation" class="slide" data-transition="none">
+<div class="content " ref="Business/crumbling_foundation">
+<h1>Crumbling Foundation</h1>
+
+<p><img src="./file//_images/collapsed_foundation.jpg" class=" float_right w50" alt=""></p>
+
+<ul>
+<li>We've forgotten about the countless companies who let their ecosystems die</li>
+<li>and then collapsed without that foundation to build on</li>
+<li>Dotan Horovits has a talk series about the "Dark Side of Open Source" that tells
+many of these stories</li>
+<li>Private equity makes it worse by laser focusing on nothing but short term profits</li>
+</ul>
+
+<p class="callout info">Avoiding this demise requires a drastic shift in mindset...</p>
+
+
+</div>
+<div class="notes-section notes">
+
+<ul>
+<li>Lots of companies are in this process right now!</li>
+<li>But weirdly enough, Microsoft and Steve Ballmer got it.</li>
+<li>GitHub and Figma, even Slack understand that the ecosystem is central to your value</li>
+</ul>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Business" data-title="product" id="Business_product" class="slide center" data-transition="none">
+<div class="content center" ref="Business/product">
+<p class="callout quote borderless"><br><span style="font-size: 2.5em;">Ecosystem is the product!</span></p>
+
+<h2>The thing you sell only enables the ecosystem.</h2>
+
+<h3><em>Whether it's free or very very expensive.</em></h3>
+
+
+</div>
+<div class="notes-section notes">
+
+<p class="callout info">if there is one single slide you take a photo of and show to your boss,
+let it be this one.</p>
+
+<ul>
+<li>Your product's ecosystem is the actual value you are generating.</li>
+<li>The things you build and sell only support and enable this ecosystem.</li>
+<li>Without the ecosystem, they are nothing.</li>
+<li>However you make money -- services, support tiers, dev tools, product --
+it's all contingent on the ecosystem <u><strong><em>existing</em></strong></u>.</li>
+</ul>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Business" data-title="treat_like_product" id="Business_treat_like_product" class="slide" data-transition="none">
+<div class="content " ref="Business/treat_like_product">
+<h1>Treat your ecosystem <strong><em>like a product</em></strong>
+</h1>
+
+<p><img src="./file//_images/blue-skies-small.jpg" class=" w66" alt=""></p>
+
+<ol>
+<li>Understand customer needs</li>
+<li>... so you can definine requirements</li>
+<li>... and then work with cross-functional teams to deliver</li>
+<li><strong><em>... a successful product that meets goals and provides value</em></strong></li>
+</ol>
+
+
+</div>
+<div class="notes-section notes">
+
+<ul>
+<li>Your community users are your customers</li>
+<li>The value they get is a healthy and engaging community</li>
+<li>but the value you get is a solid foundation for everything else</li>
+</ul>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Business" data-title="planning_table" id="Business_planning_table" class="slide" data-transition="none">
+<div class="content " ref="Business/planning_table">
+<h1>A seat at the planning table</h1>
+
+<p><img src="./file//_images/planning.jpg" class=" w66" alt=""></p>
+
+<ul>
+<li>Ecosystem should have equal weight in planning sessions</li>
+<li>Will features lower friction or increase it?</li>
+<li>Will features encourage or discourage community engagement?</li>
+<li>Will features enable third-party content or "capture market space"?</li>
+</ul>
+
+
+</div>
+<div class="notes-section notes">
+
+<ul>
+<li>The phrase "capture market space" is often synonymous with "deny space to others"</li>
+<li>At Puppet, inc, the closest I was able to get to this was getting the developer
+kit on the release checklist.</li>
+<li>But community and ecosystem impact should have been part of every major
+planning meeting.</li>
+<li>Because again, without users and content, the "product" is nothing.</li>
+<li>And as it turns out, this omission showed in all the products that failed to
+achieve significant adoption.</li>
+<li>Puppet was the only thing we built that was community &amp; ecosystem first, and it's
+also the only thing we introduced successfully.</li>
+</ul>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Business" data-title="monetize" id="Business_monetize" class="slide center" data-transition="none">
+<div class="content center" ref="Business/monetize">
+<p class="callout quote borderless"><br><span style="font-size: 1.8em; line-height: 1.8em;">
+  When the suits start throwing around words like <em>"monetize"</em>, make sure they know
+  what it is that they are monetizing.</span></p>
+
+
+</div>
+<div class="notes-section notes">
+
+<ul>
+<li>Post-acquisition Puppet is a prime example here.</li>
+<li>They are currently working on monetizing the <strong><em>DEVELOPER KIT</em></strong> and increasing
+friction for everyone trying to build Puppet modules!</li>
+<li>Making a few dollars in profit, but making ecosystem participation harder for everyone.</li>
+<li>Which has already lost them customers. Which I know because I took some of them 😂</li>
+</ul>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Business" data-title="ethos" id="Business_ethos" class="slide" data-transition="none">
+<div class="content " ref="Business/ethos">
+<h1>Our Business Ethos</h1>
+
+<p><img src="./file//_images/sponsor-overlook-sq.png" class=" float_right w33" alt=""></p>
+
+<ul>
+<li>The fork we're supporting and any products we end up building on it are
+OSS from top to bottom</li>
+<li>We won't sell access to products, but enable success with them</li>
+<li>Public benefit company encodes ethos into business structure &amp; bylaws</li>
+<li>Fiduciary duty includes community benefit and not just shareholder returns</li>
+<li>Sharing the abundance
+
+<ul>
+<li>profit sharing with the contributors who've enabled this success</li>
+<li>work with other players in the space rather than cannibalizing it all</li>
+</ul>
+</li>
+</ul>
+
+
+</div>
+<div class="notes-section notes">
+
+<ul>
+<li>We are building a system leveraging GitHub Sponsors to automatically share a
+portion of our profits with all contributors to the codebase.</li>
+<li>There are a ton of details to be worked out</li>
+<li>And it's probably not going to be more than beer/fun money. But it's something.</li>
+<li>We may have done the lion's share of the forking, but we're not trying to crowd out the space</li>
+<li>There are options besides us for OpenVox support</li>
+</ul>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Business" data-title="incentives" id="Business_incentives" class="slide" data-transition="none">
+<div class="content " ref="Business/incentives">
+<h1>Business Incentives</h1>
+
+<p><img src="./file//_images/sponsor-overlook-sq.png" class=" float_right w33" alt=""></p>
+
+<ul>
+<li>Not incentivized to build things that we can sell and artificially gate access to</li>
+<li>Are incentivized to find most effective &amp; efficient solution to customers' problems
+
+<ul>
+<li>Improve and reuse existing tech</li>
+<li>Partner with other companies</li>
+<li>Build if we have to, but contribute to Vox Pupuli and everyone benefits</li>
+</ul>
+</li>
+<li>Avoid "prisoner's dilemma" because we sell solutions, not things</li>
+</ul>
+
+<p class="callout info">Not the path to a 10x unicorn, but to long-term sustainability
+and community benefit. And we're already making some decent headway.</p>
+
+
+</div>
+<div class="notes-section notes">
+
+<ul>
+<li>When someone says "but your GUI is just repackaged Foreman..."
+
+<ul>
+<li>"yeah, it is. That's the standard. Why reinvent just to slap a label on it?"</li>
+</ul>
+</li>
+<li>The "prisoner's dilemma" is a dirty cop tactic and why they separate people arrested together
+
+<ul>
+<li>Your best outcome (by far) is if you both hold strong.</li>
+<li>But if one of you confesses and not the other, then the one who confesses has the better outcome.</li>
+<li>So if you don't trust each other or have a way to communicate, you're best off confessing.</li>
+</ul>
+</li>
+<li>In this context, it means that the first one to build a thing incurs the cost,
+but everyone gets the benefit.</li>
+<li>And that's true. It's sort of the opposite of the "first mover's advantage"</li>
+<li>But it's also the benefit we're selling.</li>
+<li>You get the benefits others have contributed as well as the ones you've paid for.</li>
+</ul>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Conclusion" data-title="hippie" id="Conclusion_hippie" class="slide" data-transition="none">
+<div class="content " ref="Conclusion/hippie">
+<h1>Yes, I'm a dirty Hippie</h1>
+
+<p><img src="./file//_images/dirty_hippie.jpeg" class=" float_right w50" alt=""></p>
+
+<ul>
+<li>I don’t think that American style capitalism is sustainable
+
+<ul>
+<li>Enclosure &amp; artificial scarcity</li>
+<li>Perpetual expansion -- a cancer</li>
+<li>Incompatible with choice</li>
+<li>Commodification of labor, land, and money</li>
+</ul>
+</li>
+<li>Wasteland of half-completed abandoned projects and community churn</li>
+</ul>
+
+<p class="callout cheers borderless"><strong><em>There is a better future!</em></strong></p>
+
+
+</div>
+<div class="notes-section notes">
+
+<ul>
+<li>The island of Madeira is where modern capitalism sprang into being in the 1400's
+
+<ul>
+<li>without the social expectations of how trade &amp; barter worked, slavery became the norm.</li>
+<li>"labor" was just a number in the books</li>
+<li>Lumber and sugarcane were raw resources to exploit</li>
+<li>Nobody was there to frown at them</li>
+<li>It was the first time that labor, land, and money were all commoditized at the same time and it was wildly efficient.</li>
+<li>
+<em>As long as you didn't care about the side effects</em> like health and happiness and sustainability</li>
+<li>Sugar exports skyrocketed and investors back in Portugal made a lot of money.</li>
+<li>Until the lumber ran out. Then it crashed.</li>
+<li>So they did what captitalism has now made commonplace.</li>
+<li>They abandoned that husk of an island and moved on to the next victim.</li>
+<li>And they will not stop until the world is sucked dry.</li>
+</ul>
+</li>
+<li>You see that in tech communities today.
+
+<ul>
+<li>When the insatiable hunger for profits outstrips what is being produced, they just begin to turn the thumbscrews.</li>
+<li>Cory Doctorow calls this <em>enshittification</em>.</li>
+<li>And when they get to the point where they can squeeze no more blood, then it's all simply cast aside and they move on to the next big thing.</li>
+<li>And you're left to pick up whatever pieces you can and hopefully migrate to something else that can solve your problems.</li>
+</ul>
+</li>
+<li>And this means that there's stupid competition because they're all vying to have <strong><em>it all</em></strong>.</li>
+<li>This stomping competition just to one-up them is super wasteful. For example,
+Puppet should never have built Bolt. It's very good now, but it took an
+immense amount of work to get there. And when it failed to out-compete
+Ansible, Puppet more or less gave up on it.</li>
+<li>Rebuilding connections with other communities, Ansible, Foreman, etc.</li>
+<li>Mark your calendars for my talk next year where I report on how successful this plan is</li>
+</ul>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="Conclusion" data-title="questions" id="Conclusion_questions" class="slide center" data-transition="none">
+<div class="content center bigtext" ref="Conclusion/questions">
+<h1>Questions?</h1>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+</div>
+<div id="buttonNav">
+  <div id="buttonPrev"><i class="fa fa-chevron-left fa-lg"></i> Previous</div><div id="buttonNext">Next <i class="fa fa-chevron-right fa-lg"></i></div>
+</div>
+<div id="pauseScreen">
+  PAUSED
+</div>
+
+  <script defer type="text/javascript">
+    // We want the audience members to see automatic tours. We can assume that they won't be
+    // using many server domains like the presenter might.
+    var autoTour = true;
+
+    $( document ).ready(function() {
+      if(presenter && !window.opener) {
+        alert('This is an audience view designed for interactivity. If you are placing this window on a projector, you should use the Display View instead.');
+      }
+
+      tours['showoff:activity'] = [
+        {
+          element: ".currentSlide .activityToggle",
+          intro: I18n.t('tour.activity.complete')
+        }
+      ];
+
+      tours['showoff:form'] = [
+        {
+          element: ".currentSlide input.save",
+          intro: I18n.t('tour.form.save')
+        }
+      ];
+
+      tours['showoff:menu'] = [
+        {
+          element: "#hamburger",
+          intro: I18n.t('tour.menu.start')
+        },
+        {
+          element: "#navToggle",
+          intro: I18n.t('tour.menu.navigation')
+        },
+        {
+          element: "#fileDownloads",
+          intro: I18n.t('tour.menu.download')
+        },
+        {
+          element: "#paceFaster",
+          intro: I18n.t('tour.menu.pace')
+        },
+        {
+          element: "#questionToggle",
+          intro: I18n.t('tour.menu.questions')
+        },
+        {
+          element: "#feedbackToggle",
+          intro: I18n.t('tour.menu.feedback')
+        }
+      ].filter(function(item) { return (document.querySelector(item['element'])) });
+      // display tips for only the enabled features
+    });
+  </script>
+
+</body>
+</html>
